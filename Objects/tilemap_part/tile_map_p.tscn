@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcijphyw4pe05"]
+
+[ext_resource type="Script" path="res://Objects/tilemap_part/tile_map_p.gd" id="1_63iba"]
+
+[node name="TileMapP" type="Node2D"]
+script = ExtResource("1_63iba")
+
+[connection signal="make_particles" from="." to="." method="_on_make_particles"]

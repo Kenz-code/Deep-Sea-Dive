@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg7vacdume146"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_02j2i"]
+[ext_resource type="Script" path="res://Scenes/Leaderboard/leaderboard_menu.gd" id="2_oi03j"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="3_kpgnk"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="3_ochkv"]
+
+[node name="LeaderboardMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_02j2i")
+script = ExtResource("2_oi03j")
+
+[node name="MenuBG" parent="." instance=ExtResource("3_kpgnk")]
+layout_mode = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.5
+offset_top = 85.0
+offset_right = 250.5
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 82
+text = "Leaderboard"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -528.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Loading" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 82
+text = "Loading..."
+
+[node name="BackButton" parent="." instance=ExtResource("3_ochkv")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 74.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

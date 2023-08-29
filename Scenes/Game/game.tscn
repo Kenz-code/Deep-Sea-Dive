@@ -1,0 +1,178 @@
+[gd_scene load_steps=17 format=3 uid="uid://bigt2bha3tl8j"]
+
+[ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_2jtga"]
+[ext_resource type="PackedScene" uid="uid://5lfd58l3lrpb" path="res://Objects/player/player.tscn" id="1_a3bge"]
+[ext_resource type="Script" path="res://Scenes/Game/Segments.gd" id="1_fhaoe"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="2_opnk8"]
+[ext_resource type="Texture2D" uid="uid://d18xir55my7ta" path="res://Art/bg1.png" id="3_fs1ty"]
+[ext_resource type="PackedScene" uid="uid://c1gwgr7ba2rgc" path="res://Components/timer_bar/timer_component.tscn" id="3_q35nu"]
+[ext_resource type="PackedScene" uid="uid://ncol01b7re5t" path="res://Objects/camera/camera_2d.tscn" id="4_vgnhr"]
+[ext_resource type="Texture2D" uid="uid://oqw68owopoo6" path="res://Art/bubble.png" id="6_x7wto"]
+[ext_resource type="PackedScene" uid="uid://bvygtpf2cxq2e" path="res://Objects/pearls_couonter/pearl_counter.tscn" id="6_xmi1n"]
+[ext_resource type="PackedScene" uid="uid://dnhr1hekx25w3" path="res://Objects/depth_counter/depth_counter.tscn" id="7_nj11u"]
+[ext_resource type="AudioStream" uid="uid://o75kddobj3v0" path="res://SFX/Ambience_Gameplay.mp3" id="11_xaok3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utd4y"]
+size = Vector2(64, 1e+08)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d44id"]
+size = Vector2(781, 175)
+
+[sub_resource type="Animation" id="Animation_0gj2r"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.0196078, 0), Color(0.0588235, 0.0588235, 0.411765, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubblesP:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vhi13"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0588235, 0.0588235, 0.411765, 1), Color(0, 0, 0.0196078, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmckw"]
+_data = {
+"fade_in": SubResource("Animation_0gj2r"),
+"fade_out": SubResource("Animation_vhi13")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_2jtga")
+
+[node name="MenuBG" parent="." instance=ExtResource("2_opnk8")]
+texture = ExtResource("3_fs1ty")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" groups=["wall"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(-32, 368)
+shape = SubResource("RectangleShape2D_utd4y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(608, 387)
+shape = SubResource("RectangleShape2D_utd4y")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(288, -88)
+shape = SubResource("RectangleShape2D_d44id")
+
+[node name="Segments" type="Node2D" parent="."]
+script = ExtResource("1_fhaoe")
+
+[node name="Player" parent="." instance=ExtResource("1_a3bge")]
+position = Vector2(280, 150)
+
+[node name="Camera2D" parent="." instance=ExtResource("4_vgnhr")]
+offset = Vector2(0, -150)
+anchor_mode = 0
+limit_left = -80
+limit_top = 0
+limit_right = 640
+limit_smoothed = true
+default_offset = Vector2(0, -150)
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_scale = 12.126
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerBarComponent" parent="UI/Control" instance=ExtResource("3_q35nu")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.48
+offset_right = -11.48
+offset_bottom = 168.0
+grow_horizontal = 0
+
+[node name="PearlCounter" parent="UI/Control" instance=ExtResource("6_xmi1n")]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 70.0
+pivot_offset = Vector2(100, 30)
+
+[node name="DepthCounter" parent="UI/Control" instance=ExtResource("7_nj11u")]
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+z_index = 2
+offset_left = -10801.0
+offset_top = -3417.0
+offset_right = 11511.0
+offset_bottom = 9.99966e+07
+color = Color(0, 0, 0.0196078, 0)
+
+[node name="BubblesP" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(280, -170)
+amount = 500
+lifetime = 1.5
+one_shot = true
+local_coords = true
+draw_order = 1
+texture = ExtResource("6_x7wto")
+emission_shape = 3
+emission_rect_extents = Vector2(300, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 545.45
+initial_velocity_max = 545.45
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gmckw")
+}
+
+[node name="AmbienceSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xaok3")
+volume_db = -6.0
+autoplay = true
+bus = &"SFX"

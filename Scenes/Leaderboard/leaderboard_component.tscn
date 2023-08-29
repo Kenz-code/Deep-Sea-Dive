@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq8cp71cs8lpw"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_s60do"]
+[ext_resource type="Script" path="res://Scenes/Leaderboard/leaderboard_component.gd" id="2_n61s8"]
+
+[node name="LeaderboardComponent" type="HBoxContainer"]
+custom_minimum_size = Vector2(504, 45)
+offset_right = 504.0
+offset_bottom = 45.0
+theme = ExtResource("1_s60do")
+script = ExtResource("2_n61s8")
+
+[node name="Pos" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "#1 "
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+theme_override_font_sizes/font_size = 42
+text = "WWWWWWWWWW"
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "100"

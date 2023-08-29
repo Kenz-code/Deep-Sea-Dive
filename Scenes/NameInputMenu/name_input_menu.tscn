@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://ubytwvr7rsu6"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_y654y"]
+[ext_resource type="Script" path="res://Scenes/NameInputMenu/name_input_menu.gd" id="2_cjvkm"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="3_7l6ga"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="3_gb7gh"]
+
+[node name="NameInputMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y654y")
+script = ExtResource("2_cjvkm")
+
+[node name="MenuBG" parent="." instance=ExtResource("3_7l6ga")]
+layout_mode = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.0
+offset_top = 100.0
+offset_right = 246.0
+offset_bottom = 159.0
+grow_horizontal = 2
+theme = ExtResource("1_y654y")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 102
+text = "Enter 
+Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 65.0
+offset_right = 216.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter name"
+max_length = 10
+caret_blink = true
+
+[node name="OkButton" parent="." instance=ExtResource("3_gb7gh")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -139.0
+offset_right = 44.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "OK"
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="OkButton" to="." method="_on_ok_button_pressed"]

@@ -1,0 +1,266 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxf4u0i4bnl6w"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_0l62n"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="2_m6p4a"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="2_sk8be"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="4_w0mla"]
+[ext_resource type="Texture2D" uid="uid://b6ctvg0t1tjne" path="res://Art/mute_button.png" id="5_rl1hr"]
+
+[sub_resource type="Animation" id="Animation_audey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(528, 263)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shameonyou:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shameonyou:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 696)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shameonyou:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vnaiq"]
+resource_name = "title_bob"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(24, 32), Vector2(24, 22), Vector2(24, 32), Vector2(24, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(528, 263)]
+}
+
+[sub_resource type="Animation" id="Animation_nude0"]
+resource_name = "Shameonyou"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shameonyou:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shameonyou:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 696), Vector2(48, 672)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shameonyou:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shameonyou:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8skv"]
+_data = {
+"RESET": SubResource("Animation_audey"),
+"Shameonyou": SubResource("Animation_nude0"),
+"title_bob": SubResource("Animation_vnaiq")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0l62n")
+script = ExtResource("2_sk8be")
+
+[node name="MenuBG" parent="." instance=ExtResource("2_m6p4a")]
+layout_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 552.0
+offset_bottom = 295.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 102
+text = "Deep Sea
+Dive
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -72.0
+offset_right = 216.0
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource("4_w0mla")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Play"
+
+[node name="LeaderboardButton" parent="VBoxContainer" instance=ExtResource("4_w0mla")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Leaderboard"
+
+[node name="HowButton" parent="VBoxContainer" instance=ExtResource("4_w0mla")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "How to Play"
+
+[node name="CredButton" parent="VBoxContainer" instance=ExtResource("4_w0mla")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Credits"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "title_bob"
+libraries = {
+"": SubResource("AnimationLibrary_s8skv")
+}
+
+[node name="Shameonyou" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 696.0
+offset_right = 102.0
+offset_bottom = 744.0
+scale = Vector2(1e-05, 1e-05)
+theme_override_font_sizes/font_size = 24
+text = "Shame 
+on you"
+vertical_alignment = 1
+
+[node name="MuteButton" parent="." instance=ExtResource("4_w0mla")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 0.0
+grow_vertical = 0
+text = ""
+icon = ExtResource("5_rl1hr")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowButton" to="." method="_on_how_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CredButton" to="." method="_on_cred_button_pressed"]
+[connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://clqvxxe6jrjom"]
+
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="1_lyskj"]
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_o1t2g"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="2_luugt"]
+[ext_resource type="Script" path="res://Scenes/CreditsMenu/credits_menu.gd" id="2_tuwqs"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o1t2g")
+script = ExtResource("2_tuwqs")
+
+[node name="MenuBG" parent="." instance=ExtResource("1_lyskj")]
+layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 192.0
+offset_right = 552.0
+offset_bottom = 696.0
+
+[node name="credits" type="Label" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+theme_override_font_sizes/font_size = 56
+text = "Programing
+ KenboDev
+
+Art
+ kiinii
+
+Music/SFX
+ Michael Gorjacev
+
+Playtesting
+ Cappe7r"
+clip_text = true
+
+[node name="BackButton" parent="." instance=ExtResource("2_luugt")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 74.0
+text = "Back"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.5
+offset_top = 85.0
+offset_right = 250.5
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 82
+text = "Credits"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkgylj3wfn5sd"]
+
+[ext_resource type="Texture2D" uid="uid://c5mdtw0pkodu7" path="res://Art/orange.png" id="1_332l8"]
+[ext_resource type="Script" path="res://Objects/pearl/pearl.gd" id="1_fo223"]
+[ext_resource type="Texture2D" uid="uid://croabjulmpp74" path="res://Art/pearl_collected.png" id="3_hmo44"]
+[ext_resource type="Gradient" uid="uid://cthfjxyd0l4mb" path="res://Objects/tilemap_part/1.tres" id="4_wf671"]
+[ext_resource type="AudioStream" uid="uid://bu0uehg7cev5n" path="res://SFX/Item_Pearl_Collect.mp3" id="5_1unn7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1c8n3"]
+bounce = 0.31
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syi65"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6uua"]
+radius = 18.0
+
+[sub_resource type="Curve" id="Curve_rmjh8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.791209, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Pearl" type="RigidBody2D"]
+z_index = 1
+collision_layer = 8
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_1c8n3")
+script = ExtResource("1_fo223")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_332l8")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_syi65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i6uua")
+
+[node name="CollectP" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_hmo44")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 70.4
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_rmjh8")
+color_initial_ramp = ExtResource("4_wf671")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1unn7")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

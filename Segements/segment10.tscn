@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://d5ei8wcahynv"]
+
+[ext_resource type="TileSet" uid="uid://clgc380ke8v4h" path="res://main_tileset.tres" id="1_sqyiu"]
+[ext_resource type="PackedScene" uid="uid://bcijphyw4pe05" path="res://Objects/tilemap_part/tile_map_p.tscn" id="2_ek70p"]
+[ext_resource type="Gradient" uid="uid://bha8xbrao706u" path="res://Objects/tilemap_part/0.tres" id="3_b4kvr"]
+[ext_resource type="Gradient" uid="uid://cthfjxyd0l4mb" path="res://Objects/tilemap_part/1.tres" id="4_y6svv"]
+[ext_resource type="Gradient" uid="uid://0ys56v2k4d44" path="res://Objects/tilemap_part/2.tres" id="5_yeolx"]
+[ext_resource type="Gradient" uid="uid://crulyyqanjifh" path="res://Objects/tilemap_part/3.tres" id="6_8s87x"]
+[ext_resource type="Gradient" uid="uid://dih8gg8tcn36q" path="res://Objects/tilemap_part/4.tres" id="7_6f0xd"]
+[ext_resource type="PackedScene" uid="uid://dj2ioab4qs24y" path="res://Objects/fish/fish.tscn" id="8_4sh5p"]
+[ext_resource type="PackedScene" uid="uid://2kmf2n5e3nql" path="res://Objects/squid/squid.tscn" id="9_r233r"]
+
+[node name="Segment10" type="Node2D"]
+
+[node name="TileMapBG" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("1_sqyiu")
+format = 2
+layer_0/name = "MainBG"
+layer_0/tile_data = PackedInt32Array(327689, 1, 0, 393225, 1, 1, 458761, 1, 1, 524297, 1, 1, 589833, 1, 2, 589834, 65537, 2, 524298, 65537, 1, 458762, 65537, 1, 393226, 65537, 1, 327690, 65537, 0, 393227, 65537, 1, 458763, 65537, 1, 524299, 65537, 1, 589835, 65537, 1, 655371, 65537, 2, 327691, 65537, 0, 720900, 131073, 2, 720899, 262145, 2, 786435, 131073, 2, 786434, 262145, 2, 851970, 131073, 2, 851969, 65537, 2, 851968, 65537, 2, 786432, 65537, 1, 720896, 65537, 1, 655360, 65537, 1, 589824, 262145, 3, 524288, 131073, 0, 720897, 65537, 1, 655361, 262145, 3, 786433, 65537, 1, 720898, 65537, 1, 655362, 65537, 0, 655363, 65537, 0, 655364, 131073, 0, 720895, 1, 1, 786431, 1, 1, 851967, 1, 1, 655359, 1, 1, 589823, 1, 0, 917503, 1, 2, 589825, 131073, 0, 327692, 131073, 0, 393228, 131073, 1, 458764, 131073, 1, 524300, 131073, 1, 589836, 131073, 1, 655372, 131073, 2)
+
+[node name="TileMapP" parent="." instance=ExtResource("2_ek70p")]
+colors = Array[Gradient]([ExtResource("3_b4kvr"), ExtResource("4_y6svv"), ExtResource("5_yeolx"), ExtResource("6_8s87x"), ExtResource("7_6f0xd")])
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("1_sqyiu")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(196607, 65536, 1, 131072, 131072, 1, 196608, 262144, 4, 196609, 131072, 1, 262145, 262144, 4, 262146, 131072, 1, 327682, 131072, 2, 393218, 131072, 2, 458754, 262144, 4, 458755, 131072, 1, 524291, 131072, 2, 589827, 262144, 4, 655364, 131072, 3, 655363, 65536, 3, 655362, 65536, 3, 655361, 0, 3, 589824, 65536, 3, 655359, 65536, 3, 655358, 0, 3, 589822, 0, 2, 524286, 0, 2, 458750, 0, 2, 393213, 0, 3, 327677, 0, 2, 262141, 0, 1, 262142, 327680, 4, 196606, 0, 1, 65547, 131072, 1, 65546, 65536, 1, 65545, 0, 1, 131081, 327680, 4, 131080, 65536, 1, 131079, 0, 1, 196615, 65536, 2, 196614, 0, 1, 262150, 0, 2, 327686, 0, 3, 327687, 65536, 3, 327688, 65536, 3, 327689, 65536, 3, 327690, 65536, 3, 327691, 65536, 3, 327692, 131072, 3, 262156, 262144, 3, 262157, 131072, 3, 196621, 131072, 2, 131085, 131072, 1, 131084, 65536, 1, 131083, 262144, 4, 589834, 65536, 1, 655370, 65536, 2, 655369, 327680, 4, 720905, 65536, 3, 720906, 65536, 3, 720907, 131072, 3, 655371, 131072, 2, 589835, 131072, 1, 589833, 0, 1, 720904, 0, 3, 655368, 0, 1, 262143, 65536, 2, 327678, 65536, 2, 393214, 327680, 3, 327679, 65536, 2, 393215, 65536, 2, 262144, 65536, 2, 327680, 65536, 2, 393216, 65536, 2, 327681, 65536, 2, 393217, 65536, 2, 458753, 65536, 2, 524289, 65536, 2, 589825, 327680, 3, 589826, 65536, 2, 524290, 65536, 2, 524288, 65536, 2, 589823, 65536, 2, 524287, 65536, 2, 458751, 65536, 2, 458752, 65536, 2, 589828, 131072, 1, 262151, 65536, 2, 196616, 65536, 2, 262152, 65536, 2, 131082, 65536, 2, 196618, 65536, 2, 196617, 65536, 2, 262153, 65536, 2, 262154, 65536, 2, 196619, 65536, 2, 262155, 65536, 2, 196620, 65536, 2, 393219, 0, 65536, 9, 0, 0, 524298, 196608, 0, 65536, 196608, 0, 196610, 131072, 0, 65543, 65536, 0, 589832, 262144, 2, 524296, 262144, 1)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Fish" parent="Enemies" instance=ExtResource("8_4sh5p")]
+position = Vector2(86, 48)
+
+[node name="Fish2" parent="Enemies" instance=ExtResource("8_4sh5p")]
+position = Vector2(120, 624)
+
+[node name="Squid" parent="Enemies" instance=ExtResource("9_r233r")]
+position = Vector2(216, 288)

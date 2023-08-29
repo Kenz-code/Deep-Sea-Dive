@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://6cmieiv0qp1k"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_h18mq"]
+[ext_resource type="Script" path="res://Objects/ui_button/ui_button.gd" id="2_xgs67"]
+
+[node name="UIButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_h18mq")
+text = "Button"
+flat = true
+script = ExtResource("2_xgs67")
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

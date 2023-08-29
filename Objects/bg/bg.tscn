@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c12wkunynuvfu"]
+
+[ext_resource type="Script" path="res://Objects/bg/bg.gd" id="1_g1qot"]
+
+[node name="BG" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_g1qot")

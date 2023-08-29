@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyxghh7w2p50g"]
+
+[ext_resource type="Script" path="res://Scenes/BootSplash/boot_splash.gd" id="1_avaow"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="1_spmxe"]
+[ext_resource type="Texture2D" uid="uid://q5x745637b7e" path="res://Art/KenboDev Logo trans.png" id="2_vh31s"]
+[ext_resource type="Texture2D" uid="uid://1d2sgwhxpk1w" path="res://Art/kiinii2.png" id="4_h7e3e"]
+[ext_resource type="Texture2D" uid="uid://rv20pdet7tl0" path="res://Art/MGA_Productions_Logo.png" id="5_lw7x5"]
+
+[sub_resource type="Animation" id="Animation_un6sv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4guwn"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4ji1"]
+_data = {
+"RESET": SubResource("Animation_un6sv"),
+"start": SubResource("Animation_4guwn")
+}
+
+[node name="BootSplash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avaow")
+
+[node name="BG" parent="." instance=ExtResource("1_spmxe")]
+layout_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Logo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vh31s")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Logo"]
+layout_mode = 0
+offset_top = 480.0
+offset_right = 576.0
+offset_bottom = 720.0
+texture = ExtResource("4_h7e3e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Logo"]
+layout_mode = 0
+offset_top = 240.0
+offset_right = 576.0
+offset_bottom = 480.0
+texture = ExtResource("5_lw7x5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_a4ji1")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

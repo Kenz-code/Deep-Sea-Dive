@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbc46w721a17a"]
+
+[ext_resource type="PackedScene" uid="uid://2kmf2n5e3nql" path="res://Objects/squid/squid.tscn" id="1_vuqcj"]
+
+[node name="playground" type="Node2D"]
+
+[node name="Squid" parent="." instance=ExtResource("1_vuqcj")]
+position = Vector2(315, 403)

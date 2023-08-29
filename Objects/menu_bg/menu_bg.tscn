@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://kfjkpswup06i"]
+
+[ext_resource type="Script" path="res://Objects/menu_bg/menu_bg.gd" id="1_3u8qf"]
+[ext_resource type="Texture2D" uid="uid://boug0nmvsiqrv" path="res://Art/bg3.png" id="2_br546"]
+
+[node name="MenuBG" type="TextureRect"]
+offset_right = 192.0
+offset_bottom = 1e+07
+scale = Vector2(3, 3)
+texture = ExtResource("2_br546")
+stretch_mode = 1
+script = ExtResource("1_3u8qf")

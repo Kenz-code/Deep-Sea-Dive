@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bda1ftkpm04hw"]
+
+[ext_resource type="FontFile" uid="uid://ctc2ff163tri3" path="res://Font/FutilePro.ttf" id="1_35ffy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1p3d1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl3xp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iym0"]
+bg_color = Color(0.215686, 0.254902, 0.352941, 1)
+border_width_bottom = 5
+border_color = Color(0.0980392, 0.117647, 0.235294, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0.0980392, 0.117647, 0.235294, 0.827451)
+shadow_offset = Vector2(1, 2)
+
+[resource]
+default_font = ExtResource("1_35ffy")
+default_font_size = 32
+Button/font_sizes/font_size = 64
+Button/styles/focus = SubResource("StyleBoxEmpty_1p3d1")
+HeaderLarge/font_sizes/font_size = 128
+HeaderMedium/font_sizes/font_size = 64
+HeaderSmall/font_sizes/font_size = 32
+LineEdit/font_sizes/font_size = 64
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_kl3xp")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_2iym0")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnhr1hekx25w3"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_g61fj"]
+[ext_resource type="Script" path="res://Objects/depth_counter/depth_counter.gd" id="1_l20te"]
+
+[sub_resource type="Animation" id="Animation_sqwi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bbout"]
+resource_name = "blink"
+length = 5.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bji22"]
+_data = {
+"RESET": SubResource("Animation_sqwi4"),
+"blink": SubResource("Animation_bbout")
+}
+
+[node name="DepthCounter" type="Label"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -29.5
+offset_right = 102.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g61fj")
+theme_type_variation = &"HeaderMedium"
+text = "1000m"
+script = ExtResource("1_l20te")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_bji22")
+}

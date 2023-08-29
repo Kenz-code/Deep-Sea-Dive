@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq6h06r7rvp71"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_0i031"]
+[ext_resource type="Script" path="res://Scenes/HowMenu/how_menu.gd" id="1_vjg21"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="2_oms2n"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="3_101yj"]
+
+[node name="HowMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0i031")
+script = ExtResource("1_vjg21")
+
+[node name="MenuBG" parent="." instance=ExtResource("2_oms2n")]
+layout_mode = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.5
+offset_top = 85.0
+offset_right = 250.5
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 82
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("3_101yj")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 74.0
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 552.0
+offset_bottom = 696.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+theme_override_font_sizes/font_size = 56
+text = "Left Move:
+  A or Left Arrow
+
+Right Move:
+  D or Right Arrow
+
+Dive:
+  Left Mouse or
+  Space
+
+
+-Dive at enemy creatures to make them drop a pearl
+
+-You can only dive when the dive bar is fully charged (top left)
+
+-You'll lose a heart if you get hit by an enemy creature while not diving
+
+-Collect as many pearls as you can"
+autowrap_mode = 3
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

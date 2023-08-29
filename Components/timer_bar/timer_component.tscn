@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1gwgr7ba2rgc"]
+
+[ext_resource type="Script" path="res://Components/timer_bar/timer_component.gd" id="1_3imst"]
+[ext_resource type="Texture2D" uid="uid://norl4mathe2g" path="res://Art/under.png" id="2_s2gpc"]
+[ext_resource type="Texture2D" uid="uid://s72eod3sp46v" path="res://Art/over.png" id="3_aqlnx"]
+[ext_resource type="Texture2D" uid="uid://csef4tuhspyqp" path="res://Art/progress.png" id="4_jtnfq"]
+
+[node name="TimerBarComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 38.0
+offset_bottom = 151.0
+script = ExtResource("1_3imst")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -75.0
+offset_right = 17.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+value = 10.928
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("2_s2gpc")
+texture_over = ExtResource("3_aqlnx")
+texture_progress = ExtResource("4_jtnfq")

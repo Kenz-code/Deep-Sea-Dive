@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgkvdrnbb66uh"]
+
+[ext_resource type="Script" path="res://Segements/finish_segment.gd" id="1_7iha2"]
+[ext_resource type="Shader" path="res://Shaders/gradient.gdshader" id="1_gbmds"]
+[ext_resource type="TileSet" uid="uid://clgc380ke8v4h" path="res://main_tileset.tres" id="2_2qnwr"]
+[ext_resource type="PackedScene" uid="uid://bcijphyw4pe05" path="res://Objects/tilemap_part/tile_map_p.tscn" id="4_d5plj"]
+[ext_resource type="Gradient" uid="uid://bha8xbrao706u" path="res://Objects/tilemap_part/0.tres" id="5_gkj7e"]
+[ext_resource type="Gradient" uid="uid://cthfjxyd0l4mb" path="res://Objects/tilemap_part/1.tres" id="6_7fvwk"]
+[ext_resource type="Gradient" uid="uid://0ys56v2k4d44" path="res://Objects/tilemap_part/2.tres" id="7_f6pum"]
+[ext_resource type="Gradient" uid="uid://crulyyqanjifh" path="res://Objects/tilemap_part/3.tres" id="8_8amj8"]
+[ext_resource type="Gradient" uid="uid://dih8gg8tcn36q" path="res://Objects/tilemap_part/4.tres" id="9_7qhjw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxg1i"]
+shader = ExtResource("1_gbmds")
+shader_parameter/first_color = Color(1, 1, 1, 0)
+shader_parameter/second_color = Color(0, 0, 0.0196078, 1)
+shader_parameter/position = 0.0
+shader_parameter/size = 1.104
+shader_parameter/angle = 270.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggh0u"]
+size = Vector2(208, 54)
+
+[node name="FinishSegment" type="Node2D"]
+script = ExtResource("1_7iha2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kxg1i")
+offset_left = 184.0
+offset_top = 624.0
+offset_right = 396.0
+offset_bottom = 720.0
+
+[node name="TileMapBG" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_2qnwr")
+format = 2
+layer_0/name = "MainBG"
+layer_0/tile_data = PackedInt32Array(851968, 131072, 4, 851969, 1, 2, 851970, 65537, 2, 851971, 131073, 2, 851967, 1, 2, 917503, 0, 4, 393228, 131072, 4, 393227, 65536, 4, 393226, 0, 4, 131072, 65537, 0, 131073, 65537, 0, 786443, 65537, 1, 196607, 1, 0, 196610, 131073, 1, 262146, 131073, 1, 196609, 65537, 1, 196608, 65537, 1, 262143, 1, 1, 327679, 1, 1, 393215, 1, 1, 327680, 65537, 1, 262144, 65537, 1, 262145, 65537, 1, 327682, 262145, 3, 327681, 65537, 1, 458751, 1, 1, 524287, 1, 1, 589823, 1, 1, 655359, 1, 1, 720895, 1, 1, 786431, 1, 1, 786432, 65537, 2, 786433, 327681, 2, 786435, 131073, 1, 720898, 65537, 1, 655362, 65537, 1, 589826, 65537, 1, 524290, 65537, 1, 458754, 65537, 1, 393218, 65537, 1, 655361, 65537, 1, 589825, 65537, 1, 524289, 65537, 1, 458753, 65537, 1, 393217, 65537, 1, 393216, 65537, 1, 458752, 65537, 1, 589824, 65537, 1, 655360, 65537, 1, 720896, 65537, 1, 524288, 65537, 1, 524291, 262145, 3, 589827, 65537, 1, 655363, 262145, 2, 720899, 131073, 1, 589828, 131073, 1, 524292, 131073, 0, 458755, 131073, 1, 393219, 131073, 1, 327683, 131073, 0, 655364, 131073, 2, 917507, 196609, 2, 524296, 1, 1, 589832, 1, 1, 655368, 1, 1, 720904, 1, 1, 786440, 1, 1, 851976, 1, 2, 851977, 65537, 2, 851978, 65537, 2, 786442, 65537, 1, 786441, 65537, 1, 720905, 65537, 1, 655369, 65537, 1, 458763, 65537, 0, 458764, 131073, 0, 524300, 131073, 1, 589836, 131073, 1, 655372, 131073, 1, 720908, 131073, 1, 720907, 65537, 1, 524299, 65537, 1, 655371, 65537, 1, 851979, 65537, 2, 720897, 65537, 1, 786434, 65537, 1, 524297, 65537, 1, 458761, 65537, 0, 458762, 65537, 0, 524298, 65537, 1, 720906, 65537, 1, 589833, 65537, 1, 655370, 65537, 1, 589834, 65537, 1, 589835, 65537, 1, 131074, 131073, 0, 458760, 1, 0, 786444, 131073, 1, 851980, 131073, 2)
+
+[node name="TileMapP" parent="." instance=ExtResource("4_d5plj")]
+colors = Array[Gradient]([ExtResource("5_gkj7e"), ExtResource("6_7fvwk"), ExtResource("7_f6pum"), ExtResource("8_8amj8"), ExtResource("9_7qhjw")])
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_2qnwr")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(131072, 65536, 4, 131073, 65536, 4, 131074, 131072, 4, 196607, 0, 4, 393224, 0, 1, 393225, 65536, 1, 393226, 65536, 1, 393227, 65536, 1, 393228, 131072, 1, 458764, 131072, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 458760, 0, 3, 327683, 0, 1, 393219, 0, 2, 458755, 0, 2, 524291, 0, 3, 524292, 131072, 3, 458756, 131072, 2, 393220, 131072, 2, 327684, 131072, 1, 786431, 131072, 1, 851967, 65536, 2, 786432, 65536, 1, 917503, 65536, 2, 851968, 65536, 2, 983039, 65536, 3, 917504, 65536, 3, 851969, 262144, 4, 917505, 65536, 3, 786430, 0, 1, 851966, 0, 2, 917502, 0, 2, 983038, 0, 3, 786433, 131072, 1, 720908, 0, 1, 720909, 131072, 1, 786444, 327680, 4, 851980, 65536, 2, 917516, 65536, 3, 917517, 131072, 3, 851981, 131072, 2, 786445, 131072, 2, 786442, 0, 1, 786443, 65536, 1, 851979, 65536, 2, 917515, 65536, 3, 917514, 65536, 3, 851978, 327680, 4, 851976, 0, 1, 917512, 0, 3, 917513, 65536, 3, 851977, 65536, 1, 851970, 65536, 1, 917506, 65536, 3, 917507, 131072, 3, 851971, 131072, 1, 262148, 262144, 2, 327690, 131072, 0, 65537, 327680, 2, 1, 327680, 1, 196612, 262144, 1, 786434, 262144, 0, 720906, 0, 0, 720897, 327680, 0)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(288, 768)
+shape = SubResource("RectangleShape2D_ggh0u")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

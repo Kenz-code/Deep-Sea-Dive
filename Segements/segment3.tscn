@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvobayno52ivn"]
+
+[ext_resource type="TileSet" uid="uid://clgc380ke8v4h" path="res://main_tileset.tres" id="2_d70r3"]
+[ext_resource type="PackedScene" uid="uid://bcijphyw4pe05" path="res://Objects/tilemap_part/tile_map_p.tscn" id="2_ev3bl"]
+[ext_resource type="Gradient" uid="uid://bha8xbrao706u" path="res://Objects/tilemap_part/0.tres" id="3_2qe4p"]
+[ext_resource type="PackedScene" uid="uid://dj2ioab4qs24y" path="res://Objects/fish/fish.tscn" id="3_a3a4l"]
+[ext_resource type="Gradient" uid="uid://cthfjxyd0l4mb" path="res://Objects/tilemap_part/1.tres" id="4_5fjeu"]
+[ext_resource type="Gradient" uid="uid://0ys56v2k4d44" path="res://Objects/tilemap_part/2.tres" id="5_jinep"]
+[ext_resource type="Gradient" uid="uid://crulyyqanjifh" path="res://Objects/tilemap_part/3.tres" id="6_urb6j"]
+[ext_resource type="Gradient" uid="uid://dih8gg8tcn36q" path="res://Objects/tilemap_part/4.tres" id="7_uk8js"]
+
+[node name="Segment3" type="Node2D"]
+
+[node name="TileMapBG" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_d70r3")
+format = 2
+layer_0/name = "MainBG"
+layer_0/tile_data = PackedInt32Array(458755, 65537, 1, 458754, 1, 1, 524290, 1, 1, 524291, 65537, 1, 524292, 131073, 1, 458756, 131073, 1, 393218, 1, 0, 589826, 1, 2, 589827, 65537, 2, 393219, 65537, 0, 393220, 131073, 0, 589828, 131073, 2, 393223, 1, 0, 458759, 1, 1, 524295, 1, 1, 589831, 1, 2, 589832, 65537, 2, 589833, 131073, 2, 524297, 131073, 1, 458761, 131073, 1, 458760, 65537, 1, 393224, 65537, 0, 524296, 65537, 1, 393225, 131073, 0)
+
+[node name="TileMapP" parent="." instance=ExtResource("2_ev3bl")]
+colors = Array[Gradient]([ExtResource("3_2qe4p"), ExtResource("4_5fjeu"), ExtResource("5_jinep"), ExtResource("6_urb6j"), ExtResource("7_uk8js")])
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_d70r3")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(196610, 0, 2, 196611, 65536, 2, 196612, 131072, 2, 196615, 0, 2, 196616, 65536, 2, 196617, 131072, 2, 262146, 0, 2, 327682, 0, 2, 393218, 0, 3, 393220, 131072, 3, 327684, 131072, 2, 262148, 131072, 2, 262147, 65536, 2, 327683, 65536, 2, 393219, 65536, 3, 655362, 0, 2, 720898, 0, 2, 786434, 0, 2, 851970, 0, 3, 851971, 65536, 3, 786435, 65536, 2, 786436, 131072, 2, 720900, 131072, 2, 655364, 131072, 2, 720899, 65536, 2, 655363, 65536, 2, 851972, 131072, 3, 655367, 0, 2, 720903, 0, 2, 786439, 0, 2, 851975, 0, 3, 851976, 65536, 3, 851977, 131072, 3, 786441, 131072, 2, 720905, 131072, 2, 655369, 131072, 2, 655368, 65536, 2, 720904, 65536, 2, 786440, 65536, 2, 393223, 0, 3, 327687, 0, 2, 262151, 0, 2, 262152, 65536, 2, 262153, 131072, 2, 327689, 131072, 2, 393225, 131072, 3, 393224, 65536, 3, 327688, 65536, 2, 131074, 0, 1, 131075, 65536, 1, 131076, 131072, 1, 131079, 0, 1, 131080, 65536, 1, 131081, 131072, 1, 589826, 0, 1, 589827, 65536, 1, 589828, 131072, 1, 589831, 0, 1, 589832, 65536, 1, 589833, 131072, 1, 524297, 327680, 2, 65543, 131072, 0, 65540, 262144, 2, 4, 262144, 1, 524290, 65536, 0, 458761, 327680, 1, 524292, 131072, 0)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Fish" parent="Enemies" instance=ExtResource("3_a3a4l")]
+position = Vector2(48, 216)
+
+[node name="Fish2" parent="Enemies" instance=ExtResource("3_a3a4l")]
+position = Vector2(528, 216)
+
+[node name="Fish3" parent="Enemies" instance=ExtResource("3_a3a4l")]
+position = Vector2(288, 552)

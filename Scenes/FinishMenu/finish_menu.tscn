@@ -1,0 +1,178 @@
+[gd_scene load_steps=9 format=3 uid="uid://72bhg7s5ip4v"]
+
+[ext_resource type="Theme" uid="uid://bda1ftkpm04hw" path="res://main.tres" id="1_r1b8i"]
+[ext_resource type="PackedScene" uid="uid://kfjkpswup06i" path="res://Objects/menu_bg/menu_bg.tscn" id="2_vyo7s"]
+[ext_resource type="Script" path="res://Scenes/FinishMenu/finish_menu.gd" id="2_xd3o3"]
+[ext_resource type="PackedScene" uid="uid://6cmieiv0qp1k" path="res://Objects/ui_button/ui_button.tscn" id="3_3w4yj"]
+
+[sub_resource type="Animation" id="Animation_audey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(528, 316)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScoreSaving:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_htyo7"]
+resource_name = "score_saving"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreSaving:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vnaiq"]
+resource_name = "title_bob"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(24, 32), Vector2(24, 22), Vector2(24, 32), Vector2(24, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(528, 316)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8skv"]
+_data = {
+"RESET": SubResource("Animation_audey"),
+"score_saving": SubResource("Animation_htyo7"),
+"title_bob": SubResource("Animation_vnaiq")
+}
+
+[node name="FinishMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r1b8i")
+script = ExtResource("2_xd3o3")
+
+[node name="MenuBG" parent="." instance=ExtResource("2_vyo7s")]
+layout_mode = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 552.0
+offset_bottom = 348.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 86
+text = "Pearls:
+100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = 88.0
+offset_right = 216.0
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource("3_3w4yj")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Play"
+
+[node name="MenuButton" parent="VBoxContainer" instance=ExtResource("3_3w4yj")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "title_bob"
+libraries = {
+"": SubResource("AnimationLibrary_s8skv")
+}
+
+[node name="ScoreSaving" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -15.5
+offset_right = 113.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "Score
+Saving..."
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

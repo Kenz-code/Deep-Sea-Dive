@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://x6aj7bycj8qk"]
+
+[ext_resource type="AudioStream" uid="uid://yxit3re3j0ne" path="res://SFX/Brackeys_GameJam_Music_Main_Menu_Loop_V2.1.mp3" id="1_07ub7"]
+
+[node name="BGMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_07ub7")
+autoplay = true
+bus = &"Music"

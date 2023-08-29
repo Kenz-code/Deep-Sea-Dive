@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://2kmf2n5e3nql"]
+
+[ext_resource type="Script" path="res://Objects/squid/squid.gd" id="1_nh7n7"]
+[ext_resource type="Script" path="res://Components/velocity/velocity_component.gd" id="2_a2vup"]
+[ext_resource type="Texture2D" uid="uid://cmh5r8yncch3b" path="res://Art/squid.png" id="3_ut0wv"]
+[ext_resource type="Gradient" uid="uid://0ys56v2k4d44" path="res://Objects/tilemap_part/2.tres" id="4_72esd"]
+[ext_resource type="Texture2D" uid="uid://djghgdp4eov2p" path="res://Art/enemy_kill.png" id="4_uohyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_226bl"]
+size = Vector2(34.0483, 28.8096)
+
+[sub_resource type="Curve" id="Curve_h1fds"]
+_data = [Vector2(0, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.818681, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.709091), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Squid" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_nh7n7")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("2_a2vup")
+decel = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_ut0wv")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.499999, -2)
+scale = Vector2(1.08669, 1.80495)
+shape = SubResource("RectangleShape2D_226bl")
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="R" type="RayCast2D" parent="Rays"]
+target_position = Vector2(74, -87)
+collision_mask = 4
+
+[node name="L" type="RayCast2D" parent="Rays"]
+target_position = Vector2(-74, -87)
+collision_mask = 4
+
+[node name="U" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, -100)
+collision_mask = 6
+
+[node name="DieP" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_uohyk")
+emission_shape = 1
+emission_sphere_radius = 7.46
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 41.27
+initial_velocity_max = 100.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_h1fds")
+color_initial_ramp = ExtResource("4_72esd")
+
+[node name="DieP2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_h1fds")
+color_initial_ramp = ExtResource("4_72esd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
